@@ -1,0 +1,1 @@
+{"ast":null,"code":"import axios from 'axios';\nexport function getUser() {\n  return axios.get(`https://jsonplaceholder.typicode.com/users`);\n}","map":null,"metadata":{},"sourceType":"module"}

@@ -1,0 +1,1 @@
+{"ast":null,"code":"import { createAction } from 'redux-actions';\nexport const INCREMENT = 'counter/increment';\nexport const increment = createAction(INCREMENT);","map":null,"metadata":{},"sourceType":"module"}

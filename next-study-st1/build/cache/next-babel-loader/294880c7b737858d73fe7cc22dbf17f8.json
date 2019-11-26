@@ -1,0 +1,1 @@
+{"ast":null,"code":"import configure from './configure';\nexport default configure();","map":null,"metadata":{},"sourceType":"module"}

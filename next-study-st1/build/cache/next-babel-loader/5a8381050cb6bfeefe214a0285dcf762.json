@@ -1,0 +1,1 @@
+{"ast":null,"code":"import { bindActionCreators } from 'redux'; // import * as actions from 'store/actions';\n\nimport * as actions from 'store/actions';\nimport store from 'store';\nconst {\n  dispatch\n} = store;\nexport const Actions = bindActionCreators(actions, dispatch); // export const Actions = {}","map":null,"metadata":{},"sourceType":"module"}
