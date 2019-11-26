@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import {PlainTemplate} from 'components/base/template';
 import {MainHeader} from 'components/base/header';
 
-class Index extends Component {
+class About extends Component {
   render() {
     return (
       <PlainTemplate header={<MainHeader />}>
-        main
+        About
       </PlainTemplate>
     );
   }
 }
 
-export default Index;
+export default About;

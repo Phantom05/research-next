@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
 import {PlainTemplate} from 'components/base/template';
 import {MainHeader} from 'components/base/header';
+import { withRouter } from 'next/router'
 
-class Index extends Component {
+class Search extends Component {
   render() {
+    const {router} = this.props;
+    console.log(router.query);
     return (
       <PlainTemplate header={<MainHeader />}>
-        main
+        Search
       </PlainTemplate>
     );
   }
 }
 
-export default Index;
+export default withRouter(Search);

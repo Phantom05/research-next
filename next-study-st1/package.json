@@ -10,9 +10,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@zeit/next-css": "^1.0.1",
+    "babel-plugin-styled-components": "^1.10.6",
     "cross-env": "^6.0.3",
+    "extract-text-webpack-plugin": "^3.0.2",
     "next": "^9.1.4",
     "react": "^16.12.0",
-    "react-dom": "^16.12.0"
+    "react-dom": "^16.12.0",
+    "styled-components": "^4.4.1"
   }
 }
