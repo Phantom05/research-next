@@ -26,6 +26,9 @@ class PlainHeader extends Component {
         <Link href="/about">
           <a className="nav__list">About</a>
         </Link>
+        <Link href="/post">
+          <a className="nav__list">Post</a>
+        </Link>
       </Styled.PlainHeader>
     );
   }
