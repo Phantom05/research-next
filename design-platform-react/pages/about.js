@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import {PlainHeader} from '../src/components/header';
-import { PlainTemplate } from '../src/components/base/template';
+import {PlainHeader} from 'components/common/header';
+import { PlainTemplate } from 'components/base/template';
 class About extends Component {
   render() {
     return (

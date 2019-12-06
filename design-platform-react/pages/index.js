@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { PlainHeader } from '../src/components/header';
-import { PlainTemplate } from '../src/components/base/template';
+import { PlainHeader } from 'components/common/header';
+import { PlainTemplate } from 'components/base/template';
 import styled from 'styled-components';
 import axios from 'axios';
-
+import {connect} from 'react-redux';
+import {Actions} from 'store/actionCreators';
 
 const Styled = {
   Index: styled.div`
@@ -23,8 +24,19 @@ class Index extends Component {
       data
     }
   }
+
+  handleClick=(value)=>{
+    console.log('handleClick');
+    if(value === 'up'){
+      Actions.COUNTER_INCREASE()
+    }else{
+      Actions.COUNTER_DECREASE()
+    }
+    
+  }
   render() {
-    const { data } = this.props;
+    const { data,homeReducer } = this.props;
+    const {number} = homeReducer;
     return (
       <PlainTemplate
         header={<PlainHeader />}>
@@ -32,10 +44,15 @@ class Index extends Component {
           {data && data.map(
             (info,idx) => <div key={info.id} className="test">{info.name}</div>
           )}
+          {number}
+          <button onClick={()=>this.handleClick('up')}>+</button>
+          <button onClick={()=>this.handleClick('down')}>-</button>
         </Styled.Index>
       </PlainTemplate>
     );
   }
 }
 
-export default Index;
+export default connect(({home})=>({
+  homeReducer:home
+}))(Index);
