@@ -1,5 +1,5 @@
 {
-  "name": "Design_platform_test",
+  "name": "design_platform_test",
   "version": "1.0.0",
   "description": "",
   "dependencies": {
@@ -24,7 +24,8 @@
     "dev": "cross-env NODE_PATH=src next",
     "build": "next build",
     "start": "node server.js",
-    "export": "next export"
+    "export": "next export",
+    "prod": "pm2 start ./startscript.js"
   },
   "keywords": [],
   "author": "",

@@ -1,19 +1,10 @@
 import React, { Component } from 'react';
 import { PlainHeader } from 'components/common/header';
 import { PlainTemplate } from 'components/base/template';
-import styled from 'styled-components';
 import axios from 'axios';
 import {connect} from 'react-redux';
 import {Actions} from 'store/actionCreators';
 
-const Styled = {
-  Index: styled.div`
-    color:#333;
-    .test{
-      border:1px solid #ccc;
-    }
-  `
-}
 class Index extends Component {
   static async getInitialProps({ req }) {
     const config = {
@@ -40,14 +31,14 @@ class Index extends Component {
     return (
       <PlainTemplate
         header={<PlainHeader />}>
-        <Styled.Index>
+        <div>
           {data && data.map(
             (info,idx) => <div key={info.id} className="test">{info.name}</div>
           )}
           {number}
           <button onClick={()=>this.handleClick('up')}>+</button>
           <button onClick={()=>this.handleClick('down')}>-</button>
-        </Styled.Index>
+        </div>
       </PlainTemplate>
     );
   }
