@@ -1,0 +1,97 @@
+@import "utils";
+
+.login__box {
+  width: 400px;
+}
+
+.login__title {
+  text-align: center;
+
+  @include fontMixin($mainTitleFontColor, 34px) {
+    font-weight: bold;
+  }
+
+  margin-bottom: 100px;
+}
+
+.login__input_row {
+  margin-bottom: 20px;
+}
+
+.login__input {
+  width: 100%;
+  border: 0;
+
+}
+
+.login__input_box {
+  position: relative;
+  border-bottom: 1px solid #999;
+}
+
+.login__info_tx {
+  position: relative;
+  @include fontMixin($noticeIconColor, 13px);
+  left: -10px;
+  transition: .5s;
+
+  &.on {
+    left: 5px;
+  }
+}
+
+.login__btn_box {
+  margin-bottom: 50px;
+}
+
+.login__btn {
+  display: block;
+  background: $mainBlueColor;
+  color: $white;
+  width: 300px;
+  height: 40px;
+  margin: auto;
+  border: 0;
+
+  &.block {
+    width: 100%;
+  }
+}
+
+.login__checkbox{
+  label{
+    position: relative;
+    font-size: 14px;
+    cursor: pointer;
+    &:before,&:after{
+      top: 0;
+    }
+  }
+}
+.login__forget_box{
+  margin-bottom: 20px;
+  margin-top: 60px;
+  text-align: center;; 
+}
+.login__forget_tx{
+  @include fontMixin($mainTitleFontColor,14px);
+}
+.login__forget_link{
+  margin-left: 10px;
+  @include fontMixin($mainBlueColor,14px){
+    font-weight: bold;
+  }
+}
+.login__signup_btn_box {
+  text-align: center;
+}
+
+.login__signup_btn {
+  @include fontMixin($mainBlueColor, 18px);
+
+  &:hover {
+    text-decoration: underline;
+    text-decoration-color: $mainBlueColor;
+    color: $mainBlueColor;
+  }
+}

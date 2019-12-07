@@ -1,0 +1,19 @@
+@import "utils";
+
+
+.responsive.common{
+  position: relative;
+  width: 1200px;
+  height: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+.responsive {
+  @media screen and (max-width:$x-large-w){
+    width:100%;
+  }
+}
+
+

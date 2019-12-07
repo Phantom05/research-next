@@ -1,0 +1,31 @@
+@mixin floatClear {
+  &::after {
+    display: block;
+    content: '';
+    clear: both;
+  }
+}
+
+@mixin fontMixin($clr:#040404, $size:16px, $font:$defaultSans) {
+  color: $clr;
+  font-size: $size;
+  font-family: $font;
+  @content;
+}
+
+@mixin positionHeightCenter {
+  position: absolute;
+  top:50%;
+  transform: translateY(-50%);
+}
+@mixin positionWidthCenter {
+  position: absolute;
+  left:50%;
+  transform: translateX(-50%);
+}
+@mixin positionCenterCenter {
+  position: absolute;
+  left:50%;
+  top:50%;
+  transform: translate(-50%,-50%);
+}

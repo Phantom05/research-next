@@ -1,9 +1,47 @@
-// @import "styles/utils";
-@import "../../../styles/utils";
+@import "utils";
 
-.h1{
-  color: red;
+
+$headerHeight : 80px;
+$headerMobileTop : 60px;
+$headerScrollTop : 60px;
+$headerLogoWidth : 150px;
+$headerTransitionSecond : 1.5s;
+
+.header{
+  position: relative;
+  border-bottom: 1px solid $borderColor;
+  height: $headerHeight;
+  background: $white;
+  padding-right: inherit;
 }
-.hello{
-  color: $blue;
+.header__wrap{
+  position: relative;
+  margin: auto;
+  width:1200px;
+  height: 100%;
+  padding-right: inherit;
+}
+.link__logo{
+  @include positionHeightCenter;
+}
+.link__box{
+  @include positionHeightCenter;
+  left:120px;
+}
+.link__an{
+  display: inline-block;
+  @include fontMixin($mainTitleFontColor,16px){
+    font-weight: 600;
+  }
+  margin-right: 25px;;
+}
+.right__box{
+  @include positionHeightCenter;
+  right:10px;
+}
+
+@media screen and (max-width:1200px){
+  .header__wrap{
+    width:100%;
+  }
 }

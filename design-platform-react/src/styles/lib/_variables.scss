@@ -5,8 +5,7 @@ $x-large-w: 1200px;
 $xx-large-w: 1400px;
 $wide-w: 1600px;
 $x-wide-w: 1920px;
-$red : red;
-$blue : cornflowerblue;
+
 
 $breakpoints: (
   small: $small-w,
@@ -17,3 +16,56 @@ $breakpoints: (
   wide: $wide-w,
   x-wide: $x-wide-w
 );
+
+// font family
+$roboto : -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+$sans   : -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+$cent   : "Century Gothic";
+$din    : 'Din pro';
+
+$defaultSans : 'Montserrat';
+$red         : red;
+$blue        : cornflowerblue;
+$white       : #fff;
+// font color
+$menuBgclr               : #2E3336;
+$menuGrclr               : #666;
+$menuBlclr               : #0F75D4;
+$whiteClr                : #dddddd;
+$dashboardGreen          : #4cd1b6;
+$green                   : #4cd1b6;
+$inMenuBgclr             : #1E2224;
+$mainBlueColor           : #596CB9;
+$mainBlueColor_hover     : #5063AF;
+$mainWhtieColor_hover    : rgb(243, 243, 243);
+$BlueColor               : #B0BFDE;
+$BlueColor_box           : #ECEEF3;
+$create_filebox          : #F5F7FF;
+$messageBlueBox          : #DBF0FF;
+$purpleColor             : #8359B9;
+$purpleColor_hover       : #7C4FA9;
+$OrangeColor             : #FF7146;
+$OrangeColor_hover       : #FF6440;
+$grayColo_ddd            : #dddddd;
+$yellowColor             : #FFC632;
+$client_box_Color        : #59B9A8;
+$clientGreenColor        : #59B996;
+$mainFontColor           : #555;
+$borderColor             : #C6CBDE;
+$subBorderColor          : #E7E7ED;
+$mainTitleFontColor      : #333;
+$weakBorderColor         : #eee;
+$menuSkyblueColor        : #F5F8FF;
+$noticeIconColor         : #BB1212;
+$mobileFooterMainBgColor : #272C41;
+$mobileFooterSubBgColor  : #33353F;
+$boxBackgroundColor      : #F9FAFD;
+$teethMainBgColor        : #F4F8F9;
+//  #aaaaa #555555 #777777
+
+// media
+$mediaPointDesktop:1200px;
+
+$mediaPointPad:768px;
+
+$mediaPointMobile:1200px
