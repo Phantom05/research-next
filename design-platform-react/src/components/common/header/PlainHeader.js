@@ -68,19 +68,19 @@ class PlainHeader extends Component {
           </Link>
 
           <div className={css.link__box}>
-            <Link href="users/designer/list">
+            <Link href="designer">
               <a className={css.link__an}>Designer</a>
             </Link>
-            <Link href="users/client/list">
+            <Link href="client">
               <a className={css.link__an}>Client</a>
             </Link>
-            <Link href="project/list">
+            <Link href="project">
               <a className={css.link__an}>Project</a>
             </Link>
-            <Link href="views/guide">
+            <Link href="guide">
               <a className={css.link__an}>Guide</a>
             </Link>
-            <Link href="views/procing">
+            <Link href="procing">
               <a className={css.link__an}>Pricing</a>
             </Link>
           </div>
@@ -89,7 +89,7 @@ class PlainHeader extends Component {
             {isLogged ?
               'My Project'
               :
-              <Link href="auth/login">
+              <Link href="login">
                 <a><img src={icon_login} /></a>
               </Link>
             }

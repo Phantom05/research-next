@@ -23,7 +23,7 @@ export default class MyDocument extends Document {
     return (
       <html>
         <Head>
-          <title>My page</title>
+          <title>DOF - Design Platform</title>
           {/* <link rel="apple-touch-icon-precomposed" sizes="57x57" href="assets/img/favicons/apple-touch-icon-57x57.png" />
           <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/img/favicons/apple-touch-icon-114x114.png" />
           <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/img/favicons/apple-touch-icon-72x72.png" />

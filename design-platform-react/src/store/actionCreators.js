@@ -1,11 +1,12 @@
 import {bindActionCreators} from 'redux';
-import * as actions from 'store/actions';
+import * as types from 'store/types';
 import store from 'store';
 
-const {dispatch} = store;
-
-export const Actions = bindActionCreators(actions, dispatch);
-
+let dispatch;
+if(store){
+  dispatch = store;
+}
+export const Actions = bindActionCreators(types, dispatch);
 export function makeActionCreator(actionType,payload) {
   return store.dispatch({ type: actionType, payload:payload })
 }
@@ -13,6 +14,7 @@ export function makeAsyncCreateActions(actions){
   const ActionsFunction = (payload)=>makeActionCreator(actions.INDEX,payload);
   return (api)=>{
     if(typeof api !== 'function') new Error('api must be Function');
+    ActionsFunction.index = actions.INDEX;
     ActionsFunction.request = (data)=>  api(data);
     ActionsFunction.pending = (payload)=>makeActionCreator(actions.PENDING,payload);
     ActionsFunction.success = (payload)=>makeActionCreator(actions.SUCCESS,payload);
@@ -20,3 +22,4 @@ export function makeAsyncCreateActions(actions){
     return ActionsFunction
   }
 }
+

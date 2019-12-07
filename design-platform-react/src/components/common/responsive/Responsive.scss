@@ -10,6 +10,23 @@
   margin-left: auto;
   margin-right: auto;
 }
+.responsive.center{
+  @include positionCenterCenter;
+  width: auto;
+}
+.responsive.widthCenter{
+  @include positionWidthCenter;
+  width: auto;
+}
+.responsive.widthAuto{
+  width: auto;
+}
+
+.responsive.common {
+  @media screen and (max-width:$x-large-w){
+    width:100%;
+  }
+}
 .responsive {
   @media screen and (max-width:$x-large-w){
     width:100%;

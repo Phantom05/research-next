@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-import { PlainHeader } from 'components/common/header';
 import { PlainTemplate } from 'components/base/template';
-import axios from 'axios';
-import { connect } from 'react-redux';
-import HomeMain from 'components/common/main/HomeMain'
-import {Responsive} from 'components/common/responsive';
+import {HomeContainer} from 'containers/home';
+import {HeaderContainer} from 'containers/common';
 // import { Button, Modal } from 'react-bootstrap';
 // import { Actions } from 'store/actionCreators';
 
@@ -19,19 +16,12 @@ class Index extends Component {
   //   }
   // }
   render() {
-    const { data, homeReducer, authReducer } = this.props;
-    const { isLogged } = authReducer;
     return (
-      <PlainTemplate header={<PlainHeader isLogged={isLogged} />}>
-        <Responsive >
-          <HomeMain />
-        </Responsive>
+      <PlainTemplate header={<HeaderContainer />}>
+          <HomeContainer />
       </PlainTemplate>
     );
   }
 }
 
-export default connect(({ home, auth }) => ({
-  homeReducer: home,
-  authReducer: auth,
-}))(Index);
+export default Index

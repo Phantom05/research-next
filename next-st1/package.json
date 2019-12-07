@@ -1,0 +1,14 @@
+{
+  "name": "next-st1",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next"
+  },
+  "dependencies": {
+    "next": "^9.1.4",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-scripts": "3.3.0"
+  }
+}
