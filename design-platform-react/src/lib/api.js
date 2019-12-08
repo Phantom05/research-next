@@ -13,3 +13,20 @@ export function postLogin(value){
   return axios(config)
   .catch(err=>{ return {error:err}})
 }
+
+export function postLogout(){
+  return {data:true}
+}
+
+export function getToken(value){
+  console.log('token Login!');
+  const config={
+    url:apiAddress+'/test',
+    method:'post',
+    data:{
+      token:value
+    }
+  }
+  return axios(config)
+  .catch(err=>{ return {error:err}})
+}

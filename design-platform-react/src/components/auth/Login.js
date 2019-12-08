@@ -10,19 +10,19 @@ class Login extends Component {
   render() {
     const {
       failLogin,
-      failPassword,
       password,
       email,
       focus,
-      devMode,
       remember,
+      devMode,
       handleChange,
       handleFocus,
-      handleClick,
+      handleSubmit,
       handleTestButton
     } = this.props;
+    
     return (
-      <div className={css.login__box}>
+      <div >
         <h1 className={css.login__title}>SIGN IN</h1>
         {devMode &&
           <div style={{ "marginBottom": "20px" }}>
@@ -56,9 +56,6 @@ class Login extends Component {
               onChange={handleChange}
               onFocus={handleFocus} />
           </div>
-          {/* <div className={cx(css.login__info_tx, { [css.on]: failLogin })}>
-            이메일이 틀립니다.
-          </div> */}
         </div>
         <div className={css.login__input_row}>
           <div className={cx(css.login__input_box, { [css.on]: focus === 'password' })} >
@@ -71,9 +68,6 @@ class Login extends Component {
               onChange={handleChange}
               onFocus={handleFocus} />
           </div>
-          {/* <div className={cx(css.login__info_tx, { [css.on]: failPassword })}>
-            비밀번호를 확인해주세요
-          </div> */}
         </div>
         <div className={css.login__checkbox}>
           <Form.Check
@@ -83,20 +77,20 @@ class Login extends Component {
             label={`Remember Me`}
             name="remember"
             onChange={handleChange}
+            checked={remember}
           />
         </div>
 
         <div className={css.login__forget_box}>
           <p className={css.login__forget_tx}>Forgot password?
           <Link href="resetPassword">
-              <a className={css.login__forget_link}>RESET PASSWORD</a>
-            </Link>
-
+            <a className={css.login__forget_link}>RESET PASSWORD</a>
+          </Link>
           </p>
         </div>
 
         <div className={css.login__btn_box}>
-          <button className={cx(css.login__btn)} onClick={handleClick}>SIGN IN</button>
+          <button className={cx(css.login__btn)} onClick={handleSubmit}>SIGN IN</button>
         </div>
 
         <div className={css.login__signup_btn_box}>
@@ -104,7 +98,6 @@ class Login extends Component {
             <a className={css.login__signup_btn}>Create Accrount</a>
           </Link>
         </div>
-
       </div>
     );
   }

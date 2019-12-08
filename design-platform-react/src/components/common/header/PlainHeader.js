@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Link from 'next/link';
 import css from "./header.scss";
 import cx from 'classnames';
-import { logo, icon_login } from 'components/base/images';
+import { logo, icon_login,icon_alert } from 'components/base/images';
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import { Responsive } from 'components/common/responsive';
 
@@ -59,7 +59,11 @@ const menuList = {
 }
 class PlainHeader extends Component {
   render() {
-    const { isLogged } = this.props;
+    const { 
+      isLogged ,
+      handleClick,
+      profile
+    } = this.props;
     return (
       <div className={css.header}>
         <Responsive>
@@ -80,19 +84,36 @@ class PlainHeader extends Component {
             <Link href="guide">
               <a className={css.link__an}>Guide</a>
             </Link>
-            <Link href="procing">
+            <Link href="pricing">
               <a className={css.link__an}>Pricing</a>
             </Link>
           </div>
 
           <div className={css.right__box}>
             {isLogged ?
-              'My Project'
+            <>
+              <span className={css.right__icon_box}>
+                <Link href="mypage"><a className={css.myproject__btn}>My Project</a></Link>
+              </span>
+
+              <span className={cx(css.right__icon_box,css.alert__icon,{[css.new]:true})}>
+                <img src={icon_alert} />
+              </span>
+
+              <span 
+                className={cx(css.right__icon_box,css.profile__icon)} 
+                data-value={profile.name[0].toUpperCase()}>
+
+              </span>
+
+              {/* <span onClick={()=>handleClick('logout')}>Logout</span> */}
+            </>
               :
               <Link href="login">
                 <a><img src={icon_login} /></a>
               </Link>
             }
+            
           </div>
         </Responsive>
       </div>

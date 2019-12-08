@@ -1,15 +1,26 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Responsive } from 'components/common/responsive';
 import { PlainHeader } from 'components/common/header';
+import * as actions from 'store/actions';
+import {storage,keys} from 'lib/utils';
+// import { Responsive } from 'components/common/responsive';
 
 class HeaderContainer extends Component {
+  handleClick=(value)=>{
+    if(value === 'logout'){
+      actions.logout_update()
+    }
+  }
   render() {
     const { authReducer } = this.props;
-    const { isLogged } = authReducer;
+    const { isLogged,profile } = authReducer;
     return (
       <div>
-        <PlainHeader isLogged={isLogged} />
+        <PlainHeader 
+          isLogged={isLogged} 
+          handleClick={this.handleClick}
+          profile={profile}
+        />
       </div>
     );
   }

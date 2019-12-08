@@ -38,8 +38,79 @@ $headerTransitionSecond : 1.5s;
 .right__box{
   @include positionHeightCenter;
   right:10px;
+  height: 100%;
 }
 
+.myproject__btn{
+  display: inline-block;
+  background: $OrangeColor;
+  color:$white;
+  width: 110px;
+  border-radius: 25px;
+  text-align: center;
+  height: 28px;
+  line-height: 28px;
+  @include fontMixin($white,14px){
+    font-weight: 500;
+  }
+  &:hover{
+    color: $white;
+    background: $OrangeColor_hover;
+  }
+}
+
+.alert__icon{
+  display: inline-block;
+  position: relative;
+  width: 28px;
+  height: 31px;
+  cursor: pointer;
+  margin-right: 30px;
+  &>img{
+    width: 24px;
+  }
+  &.new{
+    &:after{
+      position: absolute;
+      display: block;
+      content: '';
+      clear: both;
+      right: 0;
+      top: 0;
+      background: $noticeIconColor;
+      width: 8px;
+      height: 8px;
+      border-radius: 100%;
+    }
+  }
+}
+
+.right__icon_box{
+  position: relative;
+  margin-right: 30px;
+  float: left;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.profile__icon{
+  position: relative;
+  display: inline-block;
+  width:40px;
+  height: 40px;
+  background: $white;
+  border-radius: 100%;
+  cursor: pointer;
+  border: 2px solid $client_box_Color;;
+  &:after{
+    display: block;
+    content: attr(data-value);
+    clear: both;
+    @include positionCenterCenter;
+    @include fontMixin(black,16px){
+      font-weight: bold;
+    }
+  }
+}
 @media screen and (max-width:1200px){
   .header__wrap{
     width:100%;

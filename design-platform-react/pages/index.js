@@ -3,7 +3,6 @@ import { PlainTemplate } from 'components/base/template';
 import {HomeContainer} from 'containers/home';
 import {HeaderContainer} from 'containers/common';
 // import { Button, Modal } from 'react-bootstrap';
-// import { Actions } from 'store/actionCreators';
 
 class Index extends Component {
   // static async getInitialProps({ req }) {

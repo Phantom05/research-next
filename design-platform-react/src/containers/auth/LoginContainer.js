@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Login as LoginComponent } from 'components/auth';
+import { Login } from 'components/auth';
 import * as actions from 'store/actions';
 import Router from 'next/router';
 import {regEmail,regPassword} from 'lib/utils';
+import {storage,keys} from 'lib/utils';
 
 //NOTE container로 몰기
 class LoginContainer extends Component {
@@ -12,15 +13,32 @@ class LoginContainer extends Component {
     failLogin: false,
     failPassword: false,
     focus:null,
+    
     email:'',
     password:'',
     remember:false,
     devMode:true,
    
   }
-  handleClick = () => {
+  handleFocus=(e)=>{
+    const {name} = e.target;
+    this.setState({
+      focus:name
+    })
+  }
+  handleChange=(e)=>{
+    const {name,value,checked} = e.target;
+    this.setState({
+      [name]:name === 'remember'?checked:value
+    })
+  }
+  handleSubmit=async (e)=>{
     const {email,password,remember} = this.state;
-    
+    if(remember === true){
+      storage.set(`${keys.user}remember`,email);
+    }else{
+      storage.remove(`${keys.user}remember`);
+    }
     if(!regEmail(email) || !regPassword(password)){
       this.setState({
         failLogin: false,
@@ -36,27 +54,13 @@ class LoginContainer extends Component {
     this.setState({
       failLogin: false
     });
+
     this._failureIdx = false;
     const info = {
       email,
       password
     }
-    this.handleSubmit(info)
-  }
-  handleFocus=(e)=>{
-    const {name} = e.target;
-    this.setState({
-      focus:name
-    })
-  }
-  handleChange=(e)=>{
-    const {name,value,checked} = e.target;
-    this.setState({
-      [name]:name === 'remember'?checked:value
-    })
-  }
-  handleSubmit=async (value)=>{
-    actions.login_update(value)
+    actions.login_update(info)
   }
   handleTestButton=(e)=>{
     const {name} = e.target;
@@ -78,33 +82,38 @@ class LoginContainer extends Component {
     this._failureIdx = true;
   }
   componentDidMount(){
-    console.log('dg');
+    const rememberEmail = storage.get(`${keys.user}remember`);
+    if(rememberEmail !==null){
+      this.setState({
+        email:rememberEmail,
+        remember:true
+      })
+    }
   }
   componentWillUnmount(){
     this._failureIdx = false;
   }
   render() {
-    const {failureIdx} = this.state;
     const {authReducer} = this.props;
+
     if(authReducer.isLogged){
       Router.push('/')
     }
     if(authReducer.login.failure && !this._failureIdx){
-      console.log('falu');
       this.handleFailure()
-      // alert('실패.')
     }
+
+    
+
     return (
-      <div>
-        <LoginComponent 
-          {...this.state}
-          handleSubmit={this.handleSubmit}
-          handleChange={this.handleChange}
-          handleFocus={this.handleFocus}
-          handleClick={this.handleClick}
-          handleTestButton={this.handleTestButton}
-        />
-      </div>
+      <Login 
+      {...this.state}
+      handleSubmit={this.handleSubmit}
+      handleChange={this.handleChange}
+      handleFocus={this.handleFocus}
+      handleClick={this.handleClick}
+      handleTestButton={this.handleTestButton}
+    />
     );
   }
 }
