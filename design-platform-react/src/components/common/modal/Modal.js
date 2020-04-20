@@ -17,7 +17,7 @@ class Modal extends Component {
                   <p>
                     Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vel tempora nulla, non molestiae dicta ducimus. Et unde laborum eveniet ex quod doloribus quae, aliquam beatae atque, vero assumenda rem quo?
               </p>
-                </div>
+                </div> 
                 <div className={css.button_wrap}>
                   <button onClick={close}> Confirm </button>
                 </div>

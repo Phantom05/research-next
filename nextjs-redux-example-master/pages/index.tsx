@@ -1,8 +1,7 @@
 import Link from "next/link";
-import { connect } from "react-redux";
-import Layout from "../components/MyLayout";
 import { useDispatch, useSelector } from "react-redux";
 import { getUsers, getTodo } from "../store/actions/usersActions";
+import { PlainTemplate } from 'components/base/template';
 
 
 const User = ({ user }) => (
@@ -13,30 +12,30 @@ const User = ({ user }) => (
   </li>
 );
 
-const Index = props => {
+const HomePage = props => {
   const dispatch = useDispatch();
   const { usersReducer } = useSelector(
-    ({ usersReducer }) => ({ usersReducer})
+    ({ usersReducer }) => ({ usersReducer })
   );
   const users = usersReducer.users;
 
-  const hanldeClick = config =>{
+  const hanldeClick = () => {
     dispatch(getTodo())
   }
 
   return (
-    <Layout>
+    <PlainTemplate>
       <h1>Users</h1>
       <ul>{users && users.map(user => <User key={user.id} user={user} />)}</ul>
       <button onClick={hanldeClick}>GET TODO</button>
       <h2>{usersReducer.todo.title}</h2>
-    </Layout>
+    </PlainTemplate>
   );
 };
 
 
-Index.getInitialProps = async ctx => {
+HomePage.getInitialProps = async ctx => {
   await ctx.store.dispatch(getUsers());
-  return { };
+  // return { };
 };
-export default Index;
+export default HomePage;

@@ -7,7 +7,8 @@ import produce from 'immer';
 
 export const initialState = {
   users:[],
-  todo:{}
+  todo:{},
+  user:{}
 }
 
 
@@ -23,7 +24,7 @@ export default handleActions({
   [actions.GET_USER]:(state, { payload: diff }) => {
     return produce(state, draft => {
       console.log(diff,'user');
-      // draft.count++;
+      draft.user = diff;
     })
   },
   [actions.GET_TODO]:(state, { payload: diff }) => {

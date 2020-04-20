@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 
-import reducers from "./reducers";
+import reducers from "./modules";
 
 const reduxDevtools =
   typeof window !== "undefined" && process.env.NODE_ENV !== "production"
