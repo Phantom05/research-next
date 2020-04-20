@@ -1,0 +1,32 @@
+{
+  "name": "nextjs-redux-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "dev": "node server.js",
+    "build": "next build",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "next.js",
+    "react",
+    "redux",
+    "ssr"
+  ],
+  "author": "Konstantin Galishnikov",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.19.1",
+    "express": "^4.17.1",
+    "immer": "^6.0.3",
+    "next": "^9.2.0",
+    "next-redux-wrapper": "^2.1.0",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-redux": "^7.1.3",
+    "redux": "^4.0.5",
+    "redux-actions": "^2.6.5",
+    "redux-thunk": "^2.3.0"
+  }
+}

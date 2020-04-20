@@ -2,6 +2,8 @@ const { withPlugins } = require('next-compose-plugins');
 const withOptimizedImages = require('next-optimized-images');
 const withFonts = require('next-fonts');
 const withCSS = require('@zeit/next-css');
+const withSass = require('@zeit/next-sass');
+
 
 // next.js configuration
 const nextConfig = {
@@ -20,6 +22,6 @@ const nextConfig = {
 };
 
 module.exports = withPlugins(
-  [withCSS, withOptimizedImages, withFonts],
+  [withSass, withCSS, withOptimizedImages, withFonts],
   nextConfig
 );

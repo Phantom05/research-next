@@ -15,10 +15,18 @@ const Header = () => (
     <Link href="/about">
       <a style={linkStyle}>About</a>
     </Link>
-
-    <Link href="/blog/[slug]" as="/blog/hello-blog">
-      <a style={linkStyle}>blog</a>
+    <Link href="/movie" as={`/movie/1`}>
+      <a style={linkStyle}>Movie</a>
     </Link>
+
+    <Link href="/todo">
+      <a style={linkStyle}>Todo</a>
+    </Link>
+
+    {/* <Link href="/blog/[slug]" as="/blog/hello-blog">
+      <a style={linkStyle}>blog</a>
+    </Link> */}
+    
   </header>
 )
 
