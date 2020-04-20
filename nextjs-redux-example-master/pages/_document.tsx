@@ -1,10 +1,14 @@
-import React from "react";
-import Document, { Head, Main, NextScript } from "next/document";
+import Document, {
+  Html,
+  Head,
+  Main,
+  NextScript,
+  DocumentContext,
+} from 'next/document';
 import { ServerStyleSheet } from 'styled-components'
 
 export default class extends Document {
-
-  static async getInitialProps(ctx) {
+  static async getInitialProps(ctx:DocumentContext) {
     const sheet = new ServerStyleSheet();
     const originalRenderPage = ctx.renderPage;
     try {
@@ -30,7 +34,7 @@ export default class extends Document {
 
   render() {
     return (
-      <html lang="en">
+      <Html>
         <Head>
           <meta charSet="UTF-8" />
           <meta
@@ -45,7 +49,7 @@ export default class extends Document {
           <Main />
           <NextScript />
         </body>
-      </html>
+      </Html>
     );
   }
 }

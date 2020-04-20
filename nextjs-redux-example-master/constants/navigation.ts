@@ -1,4 +1,5 @@
 export const HOME_PAGE = '/';
+export const AUTH_PAGE = "/auth/[pagename]";
 export const LOGIN_PAGE = '/auth/login';
 export const SIGNUP_PAGE = '/auth/signup';
 export const ABOUT_PAGE = '/about';

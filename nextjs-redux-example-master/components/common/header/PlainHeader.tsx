@@ -5,7 +5,8 @@ import {
   SIGNUP_PAGE,
   LOGIN_PAGE,
   ABOUT_PAGE,
-  HOME_PAGE
+  HOME_PAGE,
+  AUTH_PAGE
 } from 'constants/navigation';
 
 const Header = (props) => (
@@ -19,12 +20,16 @@ const Header = (props) => (
     </Link>
 
 
-    <Link href={LOGIN_PAGE}>
+    <Link href={LOGIN_PAGE} >
       <a className="header__an">Login</a>
     </Link>
 
-    <Link href={SIGNUP_PAGE}>
+    <Link href={SIGNUP_PAGE} >
       <a className="header__an">Sign Up</a>
+    </Link>
+
+    <Link href="/test/hello" >
+      <a className="header__an">Hello</a>
     </Link>
   </PlainHeaderStyle>
 );

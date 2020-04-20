@@ -5,7 +5,7 @@ const PlainHeaderStyled = styled.header`
     border-bottom:1px solid #ececec;
     .header__an{
       display:inline-block;
-      padding:5px;
+      padding:20px;
       color:black;
       text-decoration:none;
       &:hover{
