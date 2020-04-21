@@ -1,15 +1,35 @@
-// import { makeAsyncCreateActions, makeAsyncActions } from 'libs/utils';
-// import * as API from 'libs/api';
+import { 
+  // makeAsyncCreateActions, 
+  // makeAsyncActions 
+} from 'libs/utils';
 
-// export default {
-//   GET_USERS: "GET_USERS",
-//   GET_USER: "GET_USER",
-//   GET_TODO: "GET_TODO"
-// };
 
+function makeAsyncActions(actionName) {
+  console.log('makeAsyncActions');
+  const prefix = actionName;
+  const prefixObj = {
+    INDEX: 'INDEX',
+    INIT: `INIT`,
+    REQUEST: `REQUEST`,
+    PENDING: `PENDING`,
+    SUCCESS: `SUCCESS`,
+    FAILURE: `FAILURE`,
+    CANCEL: `CANCEL`,
+  }
+  for (const item in prefixObj) {
+    prefixObj[item] = prefix + `_${item}`;
+  }
+  // prefixObj.init = (payload)=>makeActionCreator(prefixObj.INIT,payload);
+  return prefixObj;
+}
 export const GET_USERS = "GET_USERS";
 export const GET_USER = "GET_USER";
 export const GET_TODO = "GET_TODO";
+
+
+export const SAGA_TEST = makeAsyncActions("base/SATA_TEST");
+
+
 // export const SAGA_TESTS = "SAGA_TESTS";
 
 // export const BASE_EXIT_LANDING = 'base/BASE_EXIT_LANDING';

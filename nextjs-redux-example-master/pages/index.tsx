@@ -12,7 +12,7 @@ const User = ({ user }) => (
 );
 
 function HomePage() {
-  const { getTodo } = useApi();
+  const { getTodo,GET_SAGA_TEST } = useApi();
   const { usersReducer } = useSelector(({ usersReducer }) => ({
     usersReducer,
   }));
@@ -28,6 +28,7 @@ function HomePage() {
     }
     if (seqIsTypeSaga) {
       console.log('saga');
+      GET_SAGA_TEST()
     }
   };
 

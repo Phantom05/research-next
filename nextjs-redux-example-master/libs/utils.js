@@ -6,20 +6,18 @@ import React, {
   useState,
   useLayoutEffect
 } from 'react';
-import { getUsers, getTodo, getTest } from "store/actions/usersActions";
 import * as actions from "store/actions/usersActions";
-
 import MobileDetect from "mobile-detect";
 import { useDispatch, useSelector } from "react-redux";
-// import {dispatch} from 'store/actionCreators';
 import { call } from 'redux-saga/effects';
 import { AlertFn } from 'libs/library';
 import _ from 'lodash';
+// import makeActionCreator from 'make-action-creator';
+// import {dispatch} from 'store/actionCreators';
 // import { connect } from 'react-redux';
 // import { useSelector } from 'react-redux';
 // import axios from 'axios';
 // import {storage,keys} from 'lib/library';
-// import {configure} from 'store';
 
 
 
@@ -31,11 +29,11 @@ import _ from 'lodash';
  * @param {*} actionType 
  * @param {*} payload 
  */
-export function makeActionCreator(actionType, payload) {
-  // const dispatch = useDispatch();
-  // return dispatch({ type: actionType, payload:payload })
-  return dispatch({ type: actionType, payload: payload });
-}
+// export function makeActionCreator(actionType, payload) {
+//   // const dispatch = useDispatch();
+//   // return dispatch({ type: actionType, payload:payload })
+//   return dispatch({ type: actionType, payload: payload });
+// }
 
 /**
  * Actions Name
@@ -302,6 +300,18 @@ export function useIsMounted() {
   return mounted;
 }
 
+
+/**
+ * 리덕스 사가 요청을 편하게하기위한 함수
+ * actions 함수 규격을
+ *  export const getTodo =async dispatch => {
+      const url = `https://jsonplaceholder.typicode.com/todos/1`;
+      const { data } = await Axios.get(url);
+      return dispatch({ type: actions.GET_TODO, payload: data });
+    }
+    이런식으로 맞춰줘야함
+ * @param {*} config 
+ */
 export function useApi(config = {}) {
   const { type = "", dispatch = () => { } } = config;
   const dispatchFn = type === 'init' ? dispatch : useDispatch();
