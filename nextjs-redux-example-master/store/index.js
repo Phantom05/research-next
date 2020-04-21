@@ -28,6 +28,19 @@ export const configure =  initialState => {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 // export const configure = (initialState, options) => {
 //   const sagaMiddleware = createSagaMiddleware(); // 리덕스 사가 생성
 //   const middlewares = [sagaMiddleware]; // 미들웨어 연결

@@ -1,27 +1,8 @@
 import { 
   // makeAsyncCreateActions, 
-  // makeAsyncActions 
+  makeAsyncActions  // DEBUG: 이부분
 } from 'libs/utils';
 
-
-function makeAsyncActions(actionName) {
-  console.log('makeAsyncActions');
-  const prefix = actionName;
-  const prefixObj = {
-    INDEX: 'INDEX',
-    INIT: `INIT`,
-    REQUEST: `REQUEST`,
-    PENDING: `PENDING`,
-    SUCCESS: `SUCCESS`,
-    FAILURE: `FAILURE`,
-    CANCEL: `CANCEL`,
-  }
-  for (const item in prefixObj) {
-    prefixObj[item] = prefix + `_${item}`;
-  }
-  // prefixObj.init = (payload)=>makeActionCreator(prefixObj.INIT,payload);
-  return prefixObj;
-}
 export const GET_USERS = "GET_USERS";
 export const GET_USER = "GET_USER";
 export const GET_TODO = "GET_TODO";

@@ -1,0 +1,27 @@
+.NavCategory {
+  float: right;
+  margin: {
+    right: 1em;
+    top: 10em;
+  }
+
+  .category {
+    margin : {
+      right: 2.2em;
+      top: 0.5em;
+    }
+    padding : {
+      top: 15px;
+    }
+    text : {
+      decoration: none;
+    }
+    a {
+      color: black;
+      text-decoration: none;
+    }
+  }
+  flex: 1;
+  position: fixed;
+  right: 0;
+}

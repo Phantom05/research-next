@@ -9,7 +9,7 @@ export const initialState = {
   profile:{}
 }
 
-// console.log(actions.BASE_TEST,'actions.BASE_TEST');
+console.log(actions.SAGA_TEST,'actions.BASE_TEST');
 // console.log(actions.BASE_EXIT_LANDING);
 export default handleActions({
   // NOTE: BASE

@@ -18,6 +18,10 @@ import _ from 'lodash';
 // import { useSelector } from 'react-redux';
 // import axios from 'axios';
 // import {storage,keys} from 'lib/library';
+import {configure} from 'store';
+
+console.log(configure);
+// DEBUG: 이부분
 
 
 
@@ -29,11 +33,11 @@ import _ from 'lodash';
  * @param {*} actionType 
  * @param {*} payload 
  */
-// export function makeActionCreator(actionType, payload) {
-//   // const dispatch = useDispatch();
-//   // return dispatch({ type: actionType, payload:payload })
-//   return dispatch({ type: actionType, payload: payload });
-// }
+export function makeActionCreator(actionType, payload) {
+  // const dispatch = useDispatch();
+  // return dispatch({ type: actionType, payload:payload })
+  // return dispatch({ type: actionType, payload: payload });
+}
 
 /**
  * Actions Name
@@ -54,7 +58,7 @@ export function makeAsyncActions(actionName) {
   for (const item in prefixObj) {
     prefixObj[item] = prefix + `_${item}`;
   }
-  // prefixObj.init = (payload)=>makeActionCreator(prefixObj.INIT,payload);
+  prefixObj.init = (payload)=>makeActionCreator(prefixObj.INIT,payload);
   return prefixObj;
 }
 

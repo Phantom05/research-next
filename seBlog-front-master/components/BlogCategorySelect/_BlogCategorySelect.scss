@@ -1,0 +1,20 @@
+.categorySelectTemplate {
+  position: relative;
+  z-index: 15;
+  height: 4rem;
+  background: #343a40;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  color: #fff;
+  flex: 1;
+  .thumbnailPicture {
+    width: 2em;
+    background: white;
+    margin-left: 3em;
+    cursor: pointer;
+  }
+}

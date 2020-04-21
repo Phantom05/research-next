@@ -1,0 +1,93 @@
+.menu{
+    overflow:hidden;
+    height: 1100px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: white;
+    overflow-x: hidden;
+    padding-top: 20px;
+    box-shadow: 0.1px 1px 3px 1px gray;
+    font-size: 20px;
+    width : 300px;
+    margin : {
+        top : -25px;
+        right : 50px;
+    }
+
+    .MainMenu {
+        height : 100%;
+    
+        .logo{
+            text-align: center;
+            padding : 50px;
+    
+            .name{
+                color : black;
+                text : {
+                    decoration: none;
+                    align: center;
+                }
+                font : {
+                    size : 50px;
+                    family : Monospace;
+                    weight : bold; 
+                }
+              }
+    
+            &:after{
+                padding : {
+                    top:20px;
+                }
+                content: "";
+                display: block;
+                width: 200px;
+                border-bottom: 0.5px solid #bcbcbc;
+                margin: 20px auto;
+            }
+        }
+    
+        .menuList{
+            
+            a{
+                padding: {
+                    top : 30px;
+                    right : 30px;
+                    bottom : 30px; 
+                    left : 30px;
+                }
+    
+                text : {
+                    decoration: none;
+                    align: center;
+                }
+                color: #818181;
+                display: block;
+                font-size : 30px;
+    
+                  &:after {
+                    display:block;
+                    content: '';
+                    border-bottom: solid 1px #818181;  
+                    transform: scaleX(0);  
+                    transition: transform 250ms ease-in-out;
+                    padding : {
+                        bottom : 30px;
+                    }
+                  }
+    
+                  &:hover:after { transform: scaleX(1); }
+                  
+                &[aria-selected="true"] {
+                    // background-color: gold;
+                    color:Black ;
+                    font-weight:bold;
+                }
+              }
+        }
+    }
+    
+    
+
+}

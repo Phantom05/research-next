@@ -1,0 +1,59 @@
+.blogWriteSection {
+  position: relative;
+  z-index: 15;
+  height: 4rem;
+  background: #343a40;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  color: #fff;
+
+  .titleArea {
+    -ms-flex: 1 1;
+    flex: 1 1;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    display: -ms-flexbox;
+    display: flex;
+    input {
+      flex: 1 1;
+      background: none;
+      outline: 0;
+      border: none;
+      font-size: 1.25rem;
+      color: #fff;
+    }
+  }
+  .actions {
+    button {
+      color: white;
+      height: 2.25rem;
+      line-height: 0.875rem;
+      font-size: 0.875rem;
+      padding: 0 0.75rem;
+      border-radius: 4px;
+      border: 1px solid hsla(0, 0%, 100%, 0.5);
+      cursor: pointer;
+      display: -ms-flexbox;
+      -ms-flex-align: center;
+      align-items: center;
+      margin-right: 0.75rem;
+    }
+    .backButton {
+      background-color: gray;
+      &:hover {
+        background-color: white;
+        color: black;
+      }
+    }
+    .saveButton {
+      background-color: #845ef7;
+      &:hover {
+        background-color: #8f79d0;
+      }
+    }
+  }
+}

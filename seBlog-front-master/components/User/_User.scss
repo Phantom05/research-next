@@ -1,0 +1,21 @@
+.info {
+  float: right;
+  margin-right: 30px;
+
+  .page {
+    margin : {
+      right: 50px;
+    }
+    padding : {
+      top: 15px;
+    }
+    text : {
+      decoration: none;
+    }
+
+    .img {
+      width: 45px;
+      height: 45px;
+    }
+  }
+}
