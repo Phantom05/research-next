@@ -1,11 +1,11 @@
-import React, { useRef, useLayoutEffect } from 'react';
-import { HeaderContainer } from 'containers/header';
-import { PlainFooter } from 'components/common/footer';
-import { useImmer } from 'use-immer';
+import React, { useRef, useLayoutEffect, useState, useEffect } from 'react';
 import cx from 'classnames';
+import { useImmer } from 'use-immer';
+import { PlainFooter } from 'components/common/footer';
+import { getElementSize } from 'libs/library';
+import { HeaderContainer } from 'containers/header';
 import { PlainTemplateStyle } from './PlainTemplate.style';
-import { getElementSize, compareProp } from 'libs/library';
-import {useIsomorphicLayoutEffect} from 'libs/utils';
+import { useIsomorphicLayoutEffect,useIsMounted } from 'libs/utils';
 
 const PlainTemplateState = {
   header: { x: null, y: null },
@@ -13,6 +13,7 @@ const PlainTemplateState = {
   footer: { x: null, y: null },
   isLoad: false,
 }
+
 
 function PlainTemplate(props) {
   const {
@@ -25,27 +26,33 @@ function PlainTemplate(props) {
   const headerRef = useRef();
   const footerRef = useRef();
   const childrenRef = useRef();
+  const isMounted = useIsMounted();
+  
+  useLayoutEffect(() => {
 
-  useIsomorphicLayoutEffect(() => {
-    console.log(headerRef,'headerRef');
-    setTimeout(() => {
+    setValues(draft => {
+      draft.isLoad = true;
+      draft.header = getElementSize(headerRef.current);
+      draft.footer = getElementSize(footerRef.current);
+      draft.children = getElementSize(childrenRef.current);
+    })
+  }, [headerRef, footerRef, childrenRef]);
+
+
+  useEffect(() => {
+    if (isMounted) {
       setValues(draft => {
         draft.isLoad = true;
         draft.header = getElementSize(headerRef.current);
         draft.footer = getElementSize(footerRef.current);
         draft.children = getElementSize(childrenRef.current);
       })
-    }, 0);
-  }, [headerRef,footerRef,childrenRef]);
+    }
+  }, [isMounted]);
 
-
-
-  console.log('header', values.header);
-  console.log('footer', values.footer);
-
-
+  
   return (
-    <PlainTemplateStyle {...values} className={cx({ isLoad: values.isLoad })} >
+    <PlainTemplateStyle {...values} >
       {header &&
         <div
           className={cx('PlainTemplate__header')}
@@ -55,8 +62,8 @@ function PlainTemplate(props) {
       }
       {children &&
         <div
-          className={cx('PlainTemplate__main', 
-          { isLoad: values.isLoad }
+          className={cx('PlainTemplate__main',
+            { isLoad: values.isLoad }
           )}
           ref={childrenRef}
           children={children}

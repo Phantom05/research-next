@@ -1,6 +1,6 @@
 import axios from "../../libs/axios";
 import Axios from 'axios';
-import * as actions from 'store/actions';
+import * as actions from './index';
 
 export const getUsers = () => async dispatch => {
   const users = await axios.get("/users");

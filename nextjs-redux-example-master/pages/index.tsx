@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import { getUsers, getTodo } from "store/actions/usersActions";
 import { PlainTemplate } from 'components/base/template';
-import {BASE_TEST_SAGAS} from 'store/actions';
+// import {BASE_TEST_SAGAS} from 'store/actions';
 
 
 const User = ({ user }) => (
@@ -14,7 +14,7 @@ const User = ({ user }) => (
   </li>
 );
 
-const HomePage = props => {
+function HomePage(){
   const dispatch = useDispatch();
   const { usersReducer } = useSelector(
     ({ usersReducer }) => ({ usersReducer })
@@ -34,10 +34,6 @@ const HomePage = props => {
     
   }
 
-  useEffect(()=>{
-    
-  },[]);
-
   return (
     <PlainTemplate>
       <h1>Users</h1>
@@ -48,10 +44,10 @@ const HomePage = props => {
     </PlainTemplate>
   );
 };
+// 
 
-
-// HomePage.getInitialProps = async ctx => {
-//   // await ctx.store.dispatch(getUsers());
-//   // ctx.store.dispatch({type:"SAGA_TESTS"})
-// };
+HomePage.getInitialProps = async ctx => {
+  await ctx.store.dispatch(getUsers());
+  // ctx.store.dispatch({type:"SAGA_TESTS"})
+};
 export default HomePage;

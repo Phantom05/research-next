@@ -3,6 +3,7 @@ const withOptimizedImages = require('next-optimized-images');
 const withFonts = require('next-fonts');
 const withCSS = require('@zeit/next-css');
 const withSass = require('@zeit/next-sass');
+const withTM = require('next-transpile-modules')(['somemodule', 'and-another']); // pass the modules you would like to see transpiled
 
 
 // next.js configuration
@@ -22,6 +23,7 @@ const nextConfig = {
 };
 
 module.exports = withPlugins(
-  [withSass, withCSS, withOptimizedImages, withFonts],
+  [withSass,withTM, withCSS, withOptimizedImages, withFonts],
   nextConfig
 );
+

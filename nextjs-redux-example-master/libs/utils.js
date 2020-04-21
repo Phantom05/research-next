@@ -17,7 +17,7 @@ import { AlertFn } from 'libs/library';
 // import { useSelector } from 'react-redux';
 // import axios from 'axios';
 // import {storage,keys} from 'lib/library';
-import {configure} from 'store';
+// import {configure} from 'store';
 
 
 
@@ -290,6 +290,15 @@ export function useDeviceType(userAgent) {
 export const useIsomorphicLayoutEffect =
   typeof window !== 'undefined' ? useLayoutEffect : useEffect;
 // export default useIsomorphicLayoutEffect;
+
+
+export function useIsMounted() {
+  let [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+  return mounted;
+}
 
 
 
