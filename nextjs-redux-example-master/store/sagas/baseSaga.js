@@ -11,10 +11,14 @@ import { createPromiseSaga } from 'libs/utils';
 //   tag:'handleToken',
 // });
 
+function* handleTest(){
+  console.log('handleTest');
+}
+
 
 
 export default function* ListingSaga() {
   yield all([
-    // takeEvery(BASE_TEST_SAGAS.index, handleTest)
+    // takeEvery("GET_TODO", handleTest)
   ])
 }

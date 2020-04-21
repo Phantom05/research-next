@@ -16,7 +16,7 @@ export default handleActions({
   // NOTE: Base
   [actions.GET_USERS]:(state, { payload: diff }) => {
     return produce(state, draft => {
-      console.log(diff,'users');
+      console.log(diff,'users1');
       // draft.count++;
       draft.users = diff;
     })

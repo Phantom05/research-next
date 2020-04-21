@@ -1,18 +1,20 @@
 
-import React, { 
+import React, {
   useEffect,
   useRef,
   useReducer,
   useState,
   useLayoutEffect
 } from 'react';
+import { getUsers, getTodo, getTest } from "store/actions/usersActions";
+import * as actions from "store/actions/usersActions";
 
 import MobileDetect from "mobile-detect";
-// import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 // import {dispatch} from 'store/actionCreators';
 import { call } from 'redux-saga/effects';
 import { AlertFn } from 'libs/library';
-// import _ from 'lodash';
+import _ from 'lodash';
 // import { connect } from 'react-redux';
 // import { useSelector } from 'react-redux';
 // import axios from 'axios';
@@ -29,10 +31,10 @@ import { AlertFn } from 'libs/library';
  * @param {*} actionType 
  * @param {*} payload 
  */
-export function makeActionCreator(actionType,payload) {
+export function makeActionCreator(actionType, payload) {
   // const dispatch = useDispatch();
   // return dispatch({ type: actionType, payload:payload })
-  return dispatch({ type: actionType, payload:payload });
+  return dispatch({ type: actionType, payload: payload });
 }
 
 /**
@@ -43,15 +45,15 @@ export function makeAsyncActions(actionName) {
   console.log('makeAsyncActions');
   const prefix = actionName;
   const prefixObj = {
-    INDEX   : 'INDEX',
-    INIT    : `INIT`,
-    REQUEST : `REQUEST`,
-    PENDING : `PENDING`,
-    SUCCESS : `SUCCESS`,
-    FAILURE : `FAILURE`,
-    CANCEL  : `CANCEL`,
+    INDEX: 'INDEX',
+    INIT: `INIT`,
+    REQUEST: `REQUEST`,
+    PENDING: `PENDING`,
+    SUCCESS: `SUCCESS`,
+    FAILURE: `FAILURE`,
+    CANCEL: `CANCEL`,
   }
-  for(const item in prefixObj){
+  for (const item in prefixObj) {
     prefixObj[item] = prefix + `_${item}`;
   }
   // prefixObj.init = (payload)=>makeActionCreator(prefixObj.INIT,payload);
@@ -62,17 +64,17 @@ export function makeAsyncActions(actionName) {
  * makeAsyncActions
  * @param {*} actions Object
  */
-export function makeAsyncCreateActions(actions){
-  const ActionsFunction = (payload)=>makeActionCreator(actions.INDEX,payload);
-  return (api)=>{
-    if(typeof api !== 'function') new Error('api must be Function');
-    
+export function makeAsyncCreateActions(actions) {
+  const ActionsFunction = (payload) => makeActionCreator(actions.INDEX, payload);
+  return (api) => {
+    if (typeof api !== 'function') new Error('api must be Function');
+
     ActionsFunction.index = actions.INDEX;
-    ActionsFunction.request = (data)=>  api(data);
-    ActionsFunction.init = (payload)=>makeActionCreator(actions.INIT,payload);
-    ActionsFunction.pending = (payload)=>makeActionCreator(actions.PENDING,payload);
-    ActionsFunction.success = (payload)=>makeActionCreator(actions.SUCCESS,payload);
-    ActionsFunction.failure = (payload)=>makeActionCreator(actions.FAILURE,payload);
+    ActionsFunction.request = (data) => api(data);
+    ActionsFunction.init = (payload) => makeActionCreator(actions.INIT, payload);
+    ActionsFunction.pending = (payload) => makeActionCreator(actions.PENDING, payload);
+    ActionsFunction.success = (payload) => makeActionCreator(actions.SUCCESS, payload);
+    ActionsFunction.failure = (payload) => makeActionCreator(actions.FAILURE, payload);
     return ActionsFunction
   }
 }
@@ -84,51 +86,51 @@ export function makeAsyncCreateActions(actions){
  * @param {*} promiseCreator 
  */
 export const createPromiseSaga = ({
-  type, 
+  type,
   tag,
-  pending = ()=>{},
-  success = ()=>{},
-  failure = ()=>{}
-} ) => {
+  pending = () => { },
+  success = () => { },
+  failure = () => { }
+}) => {
 
   return function* saga(action) {
     AlertFn(tag);
-    if(!type) {
+    if (!type) {
       console.warn(`createPromiseSaga Need type`);
       return null;
     };
-    try{
-      const payload = action.payload ;
+    try {
+      const payload = action.payload;
       console.log(`${type.index} PENDING`);
       pending(action);
       type.pending();
-      console.log(` %cRequest Data :\n`,"color:red;padding:5px;font-weight:bold",payload);
-      const {data,error,cancel} =yield call(type.request,payload);
-      console.log(` %cResponse Data :\n`,"color:red;padding:5px;font-weight:bold",data);
+      console.log(` %cRequest Data :\n`, "color:red;padding:5px;font-weight:bold", payload);
+      const { data, error, cancel } = yield call(type.request, payload);
+      console.log(` %cResponse Data :\n`, "color:red;padding:5px;font-weight:bold", data);
 
-      if(cancel){
-        type.pending({type:"cancel"});
+      if (cancel) {
+        type.pending({ type: "cancel" });
         return;
       }
       data.payload = payload || {};
-      if(data && !error){
-        if(data.result === 1){
+      if (data && !error) {
+        if (data.result === 1) {
           console.log(`${type.index} SUCCESS`);
           success(data, payload);
           type.success(data);
-        }else{
+        } else {
           console.log(`${type.index} FAILURE`);
           failure(data);
           type.failure(data);
         }
-      }else{
+      } else {
         console.log(`${type.index} FAILURE`);
         failure(data);
         type.failure(data);
       }
-    }catch(e){
+    } catch (e) {
       console.log(`${type.index} ERROR`);
-      console.log(e,'error');
+      console.log(e, 'error');
     }
   };
 };
@@ -138,11 +140,11 @@ export const createPromiseSaga = ({
  * @param {*} draft 
  * @param {*} type 
  */
-export function IPSFset(draft,type){
+export function IPSFset(draft, type) {
   draft.pending = false;
   draft.success = false;
   draft.failure = false;
-  if(type !== 'init'){
+  if (type !== 'init') {
     draft[type] = true;
   }
 }
@@ -206,10 +208,10 @@ export const useInput = (function () {
 export function useDidUpdateEffect(fn, inputs) {
   const didMountRef = useRef(false);
   useEffect(() => {
-    if (didMountRef.current){
+    if (didMountRef.current) {
       fn();
     }
-    else{
+    else {
       didMountRef.current = true;
     }
   }, inputs);
@@ -259,7 +261,7 @@ export const useActiveElement = () => {
     document.addEventListener('focusin', handleFocusIn)
     return () => {
       document.removeEventListener('focusin', handleFocusIn)
-  };
+    };
   }, [])
 
   return active;
@@ -300,6 +302,16 @@ export function useIsMounted() {
   return mounted;
 }
 
+export function useApi(config = {}) {
+  const { type = "", dispatch = () => { } } = config;
+  const dispatchFn = type === 'init' ? dispatch : useDispatch();
+  const newActionsObject = _.reduce(actions, (x, y) => {
+    x[y.name] = async () => y(dispatchFn)
+    return x;
+  }, {});
+
+  return newActionsObject;
+}
 
 
 //SECTION: Hign Order Component (HOC)
@@ -307,16 +319,16 @@ export function useIsMounted() {
  * 
  * @param {*} url 
  */
-export const withLoading = (WrappedComponent) => (props) =>{
+export const withLoading = (WrappedComponent) => (props) => {
   return props.isLoading
-  ? (console.log('Base landing...'),<div>Loading ...</div>)
-  : <WrappedComponent { ...props } />
+    ? (console.log('Base landing...'), <div>Loading ...</div>)
+    : <WrappedComponent {...props} />
 }
 
 
 
 
-export const withUseEffect =(fn,arr) =>{
+export const withUseEffect = (fn, arr) => {
   // arr.forEach((item)=>{
   //   useEffect(()=>{
   //   },[item]);
@@ -329,6 +341,6 @@ export const withUseEffect =(fn,arr) =>{
  * 
  * @param {*} reducerInitalize 
  */
-export function initReducer(typeAction){
+export function initReducer(typeAction) {
   dispatch(typeAction)
 }

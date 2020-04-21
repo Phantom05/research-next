@@ -1,10 +1,7 @@
-import {useEffect} from 'react';
 import Link from "next/link";
-import { useDispatch, useSelector } from "react-redux";
-import { getUsers, getTodo } from "store/actions/usersActions";
-import { PlainTemplate } from 'components/base/template';
-// import {BASE_TEST_SAGAS} from 'store/actions';
-
+import { useApi } from "libs/utils";
+import { useSelector } from "react-redux";
+import { PlainTemplate } from "components/base/template";
 
 const User = ({ user }) => (
   <li>
@@ -14,40 +11,42 @@ const User = ({ user }) => (
   </li>
 );
 
-function HomePage(){
-  const dispatch = useDispatch();
-  const { usersReducer } = useSelector(
-    ({ usersReducer }) => ({ usersReducer })
-  );
+function HomePage() {
+  const { getTodo } = useApi();
+  const { usersReducer } = useSelector(({ usersReducer }) => ({
+    usersReducer,
+  }));
   const users = usersReducer.users;
 
-  const hanldeClick = config => {
-    const {type} = config;
-    
-    if(type === 'todo'){
-      dispatch(getTodo())
+  const hanldeClick = (config) => {
+    const { type } = config;
+    const seqIsTypeTodo = type === "todo";
+    const seqIsTypeSaga = type === 'saga';
+
+    if (seqIsTypeTodo) {
+      getTodo();
     }
-    if(type === 'saga'){
-      // dispatch({type:"base/BASE_TEST_INDEX"})
-      // BASE_TEST_SAGAS();
+    if (seqIsTypeSaga) {
+      console.log('saga');
     }
-    
-  }
+  };
 
   return (
     <PlainTemplate>
       <h1>Users</h1>
-      <ul>{users && users.map(user => <User key={user.id} user={user} />)}</ul>
-      <button onClick={()=>hanldeClick({type:"todo"})}>GET TODO</button>
-      <button onClick={()=>hanldeClick({type:"saga"})}>GET SAGAS</button>
-      <h2>{usersReducer.todo.title}</h2>
+      <ul>
+        {users && users.map((user) => <User key={user.id} user={user} />)}
+      </ul>
+      <button onClick={() => hanldeClick({ type: "todo" })}>GET TODO</button>
+      <button onClick={() => hanldeClick({ type: "saga" })}>GET SAGAS</button>
+      <h2>{usersReducer.todo && usersReducer.todo.title}</h2>
     </PlainTemplate>
   );
-};
-// 
+}
+//
 
-HomePage.getInitialProps = async ctx => {
-  await ctx.store.dispatch(getUsers());
-  // ctx.store.dispatch({type:"SAGA_TESTS"})
+HomePage.getInitialProps = async (ctx) => {
+  const { getUsers } = useApi({ type: "init", dispatch: ctx.store.dispatch });
+  await getUsers();
 };
 export default HomePage;

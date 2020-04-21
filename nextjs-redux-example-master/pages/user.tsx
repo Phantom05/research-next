@@ -25,7 +25,7 @@ function User(props) {
 
 User.getInitialProps = async ctx => {
   const { id } = ctx.query;
-  await ctx.store.dispatch(getUser(id))
+  // await ctx.store.dispatch(getUser(id))
   // return {}
 };
 
