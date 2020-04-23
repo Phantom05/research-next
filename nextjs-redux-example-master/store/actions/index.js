@@ -1,7 +1,9 @@
 import { 
-  // makeAsyncCreateActions, 
+  makeAsyncCreateActions, 
   makeAsyncActions  // DEBUG: 이부분
 } from 'libs/utils';
+import * as API from 'libs/api';
+
 
 export const GET_USERS = "GET_USERS";
 export const GET_USER = "GET_USER";
@@ -9,7 +11,7 @@ export const GET_TODO = "GET_TODO";
 
 
 export const SAGA_TEST = makeAsyncActions("base/SATA_TEST");
-
+export const SAGA_TEST_SAGAS = makeAsyncCreateActions(SAGA_TEST)(API.postTest);
 
 // export const SAGA_TESTS = "SAGA_TESTS";
 

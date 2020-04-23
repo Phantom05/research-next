@@ -20,7 +20,7 @@ import _ from 'lodash';
 // import {storage,keys} from 'lib/library';
 import {configure} from 'store';
 
-console.log(configure);
+// console.log(configure);
 // DEBUG: 이부분
 
 
