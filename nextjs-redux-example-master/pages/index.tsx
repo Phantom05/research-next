@@ -34,6 +34,7 @@ function HomePage() {
 
   return (
     <PlainTemplate>
+      {[1,2,3].map((item,idx)=><div key={idx}>{item}</div>)}
       <h1>Users</h1>
       <ul>
         {users && users.map((user) => <User key={user.id} user={user} />)}
