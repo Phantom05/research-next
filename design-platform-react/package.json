@@ -9,7 +9,7 @@
     "classnames": "^2.2.6",
     "cross-env": "^6.0.3",
     "express": "^4.17.1",
-    "immer": "^5.0.0",
+    "immer": "^8.0.1",
     "next": "^9.1.4",
     "next-compose-plugins": "^2.2.0",
     "next-images": "^1.2.0",
