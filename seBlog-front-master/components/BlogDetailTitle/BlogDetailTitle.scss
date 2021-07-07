@@ -1,0 +1,32 @@
+.blogHeader {
+  margin-bottom: 3em;
+  .blogTitle {
+    color: #333;
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 1.4;
+    margin: 0;
+  }
+
+  .details {
+    color: #999;
+    display: -ms-flex;
+    display: -webkit-flex;
+    display: flex;
+    font-size: 14px;
+    line-height: 1.4;
+    margin-top: 3px;
+    .category {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .divider {
+      margin: 0 4px;
+    }
+    .date,
+    .hits {
+      white-space: nowrap;
+    }
+  }
+}

@@ -5,3 +5,7 @@ const routes = module.exports = nextRoutes()
 // routes.add('blog/detail', '/:language/blog/:slug')
 routes.add('index', '/')
 // routes.add('index', '/wow')
+
+
+
+

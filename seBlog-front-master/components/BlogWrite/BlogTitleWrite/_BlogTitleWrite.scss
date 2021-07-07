@@ -1,0 +1,26 @@
+.titleArea {
+  position: relative;
+  z-index: 15;
+  height: 4rem;
+  background: #343a40;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  color: #fff;
+  -ms-flex: 1 1;
+  flex: 1 1;
+  display: -ms-flexbox;
+  display: flex;
+  input {
+    flex: 1 1;
+    background: none;
+    outline: 0;
+    border: none;
+    font-size: 1.25rem;
+    color: #fff;
+    margin-left: 1rem;
+  }
+}
